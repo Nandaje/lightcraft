@@ -39,8 +39,11 @@
 
     <application
         android:label="LightCraft"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher"
         android:hardwareAccelerated="true"
         android:largeHeap="true"
+        android:extractNativeLibs="true"
         android:requestLegacyExternalStorage="true"
         android:allowBackup="true"
         android:supportsRtl="true"
@@ -49,6 +52,8 @@
         <activity
             android:name=".MainActivity"
             android:label="LightCraft"
+            android:icon="@mipmap/ic_launcher"
+            android:roundIcon="@mipmap/ic_launcher"
             android:exported="true"
             android:launchMode="singleTask"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden|keyboard|navigation|uiMode|density|smallestScreenSize"
@@ -88,6 +93,7 @@
                 <data android:scheme="file" />
                 <data android:scheme="content" />
                 <data android:host="*" />
+                <data android:mimeType="*/*" />
                 <data android:pathPattern=".*\\.dng" />
                 <data android:pathPattern=".*\\.DNG" />
                 <data android:pathPattern=".*\\.cr2" />

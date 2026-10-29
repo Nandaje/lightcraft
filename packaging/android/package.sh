@@ -32,6 +32,14 @@ JNI_DIR="$ROOT_DIR/packaging/android/app/src/main/jniLibs/arm64-v8a"
 mkdir -p "$JNI_DIR"
 cp "target/$TARGET/release/liblightcraft_android.so" "$JNI_DIR/liblightcraft_android.so"
 
+RES_DIR="$ROOT_DIR/packaging/android/app/src/main/res"
+mkdir -p "$RES_DIR/mipmap-mdpi" "$RES_DIR/mipmap-hdpi" "$RES_DIR/mipmap-xhdpi" "$RES_DIR/mipmap-xxhdpi" "$RES_DIR/mipmap-xxxhdpi"
+cp "$ROOT_DIR/assets/app-icon/hicolor/48x48/apps/ai.storyteller.lightcraft.png" "$RES_DIR/mipmap-mdpi/ic_launcher.png"
+cp "$ROOT_DIR/assets/app-icon/hicolor/64x64/apps/ai.storyteller.lightcraft.png" "$RES_DIR/mipmap-hdpi/ic_launcher.png"
+cp "$ROOT_DIR/assets/app-icon/hicolor/128x128/apps/ai.storyteller.lightcraft.png" "$RES_DIR/mipmap-xhdpi/ic_launcher.png"
+cp "$ROOT_DIR/assets/app-icon/hicolor/256x256/apps/ai.storyteller.lightcraft.png" "$RES_DIR/mipmap-xxhdpi/ic_launcher.png"
+cp "$ROOT_DIR/assets/app-icon/hicolor/512x512/apps/ai.storyteller.lightcraft.png" "$RES_DIR/mipmap-xxxhdpi/ic_launcher.png"
+
 echo "==> Assembling Android release APK via Gradle"
 cd "$ROOT_DIR/packaging/android"
 gradle assembleRelease --no-daemon
