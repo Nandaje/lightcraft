@@ -90,7 +90,7 @@ avif-serialize = "0.8.6"
 # Oniguruma C library into candle-core, and the product is pure Rust.
 candle-core = { version = "=0.9.2", default-features = false }
 candle-nn = { version = "=0.9.2", default-features = false }
-wgpu = { version = "30", default-features = false, features = ["std", "parking_lot", "metal", "vulkan", "dx12", "wgsl"] }
+wgpu = { version = "30", default-features = false, features = ["std", "parking_lot", "metal", "vulkan", "dx12", "wgsl", "gles"] }
 pollster = "1"
 
 # ui

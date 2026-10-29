@@ -3561,6 +3561,25 @@ dependencies = [
 ]
 
 [[package]]
+name = "lightcraft-android"
+version = "0.15.0"
+dependencies = [
+ "android-activity",
+ "eframe",
+ "egui",
+ "jni",
+ "lightcraft-codecs",
+ "lightcraft-engine",
+ "lightcraft-raster",
+ "lightcraft-sysmem",
+ "lightcraft-ui-egui",
+ "log",
+ "ndk",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "lightcraft-catalog"
 version = "0.15.0"
 dependencies = [

@@ -70,6 +70,7 @@ pub fn default_compute_backends(os: &str) -> Backends {
         // never touch the Vulkan driver unless asked: see the module docs (issue #136)
         "windows" => Backends::DX12,
         "macos" | "ios" => Backends::METAL,
+        "android" => Backends::VULKAN,
         _ => Backends::PRIMARY,
     }
 }
@@ -79,6 +80,7 @@ pub fn default_window_backends(os: &str) -> Backends {
     match os {
         "windows" => Backends::DX12,
         "macos" | "ios" => Backends::METAL,
+        "android" => Backends::VULKAN | Backends::GL,
         // eframe's default (GL only when the build has it)
         _ => Backends::PRIMARY | Backends::GL,
     }
@@ -392,6 +394,8 @@ mod tests {
         assert_eq!(default_window_backends("windows"), Backends::DX12);
         assert!(!default_window_backends("windows").contains(Backends::VULKAN));
         assert_eq!(default_compute_backends("macos"), Backends::METAL);
+        assert_eq!(default_compute_backends("android"), Backends::VULKAN);
+        assert_eq!(default_window_backends("android"), Backends::VULKAN | Backends::GL);
         assert!(default_compute_backends("linux").contains(Backends::VULKAN));
         assert!(default_window_backends("linux").contains(Backends::VULKAN | Backends::GL));
     }

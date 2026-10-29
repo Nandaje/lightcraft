@@ -66,6 +66,7 @@ pub const TABLE: &[(&str, Class)] = &[
     ("testkit", Class::Testkit),
     // L6 apps and tooling
     ("lightcraft", Class::Exempt),
+    ("android", Class::Exempt),
     ("cli", Class::Exempt),
     ("web", Class::Exempt),
     ("xtask", Class::Exempt),
@@ -344,7 +345,7 @@ mod tests {
 
     #[test]
     fn apps_exempt() {
-        for app in ["lightcraft", "lightcraft-cli", "lightcraft-web", "xtask"] {
+        for app in ["lightcraft", "lightcraft-android", "lightcraft-cli", "lightcraft-web", "xtask"] {
             assert!(check(&[c(app, &[("egui", Normal, false), ("lightcraft-ui-egui", Normal, true)])]).is_empty());
         }
     }

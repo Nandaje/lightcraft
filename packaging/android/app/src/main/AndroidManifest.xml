@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- File & photo access permissions across Android 8 (API 26) through Android 15 (API 35) -->
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="29" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission
+        android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+
+    <!-- Network access for optional AI mask model downloads (SAM 3) -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Hardware GPU acceleration requirements: OpenGL ES 3.0+ baseline, Vulkan 1.1+ & compute preferred -->
+    <uses-feature
+        android:glEsVersion="0x00030000"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.vulkan.version"
+        android:version="0x401000"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.vulkan.level"
+        android:version="0"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.vulkan.compute"
+        android:version="0"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+
+    <application
+        android:label="LightCraft"
+        android:hardwareAccelerated="true"
+        android:largeHeap="true"
+        android:requestLegacyExternalStorage="true"
+        android:allowBackup="true"
+        android:supportsRtl="true"
+        android:theme="@android:style/Theme.DeviceDefault.NoActionBar">
+
+        <activity
+            android:name=".MainActivity"
+            android:label="LightCraft"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden|keyboard|navigation|uiMode|density|smallestScreenSize"
+            android:windowSoftInputMode="adjustResize">
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="lightcraft_android" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- Open / Edit / Share photos, RAW files, and LightCraft presets -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.EDIT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="file" />
+                <data android:scheme="content" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.EDIT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="file" />
+                <data android:scheme="content" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\\.dng" />
+                <data android:pathPattern=".*\\.DNG" />
+                <data android:pathPattern=".*\\.cr2" />
+                <data android:pathPattern=".*\\.CR2" />
+                <data android:pathPattern=".*\\.cr3" />
+                <data android:pathPattern=".*\\.CR3" />
+                <data android:pathPattern=".*\\.nef" />
+                <data android:pathPattern=".*\\.NEF" />
+                <data android:pathPattern=".*\\.arw" />
+                <data android:pathPattern=".*\\.ARW" />
+                <data android:pathPattern=".*\\.raf" />
+                <data android:pathPattern=".*\\.RAF" />
+                <data android:pathPattern=".*\\.orf" />
+                <data android:pathPattern=".*\\.ORF" />
+                <data android:pathPattern=".*\\.rw2" />
+                <data android:pathPattern=".*\\.RW2" />
+                <data android:pathPattern=".*\\.pef" />
+                <data android:pathPattern=".*\\.PEF" />
+                <data android:pathPattern=".*\\.heic" />
+                <data android:pathPattern=".*\\.HEIC" />
+                <data android:pathPattern=".*\\.avif" />
+                <data android:pathPattern=".*\\.AVIF" />
+                <data android:pathPattern=".*\\.jxl" />
+                <data android:pathPattern=".*\\.JXL" />
+                <data android:pathPattern=".*\\.lcpreset" />
+                <data android:pathPattern=".*\\.xmp" />
+                <data android:pathPattern=".*\\.cube" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
